@@ -8,17 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/poetic/blendata.git"
+    "url": "https://github.com/poetic/gravity-forms-api"
   },
   "keywords": [
     "forms"
   ],
   "author": "poetic systems",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/poetic/blendata/issues"
+    "url": "https://github.com/poetic/gravity-forms-api/issues"
   },
-  "homepage": "https://github.com/poetic/blendata#readme",
+  "homepage": "https://github.com/poetic/gravity-forms-api#readme",
   "dependencies": {
     "crypto-js": "^3.1.6"
   }
