@@ -1,0 +1,25 @@
+{
+  "name": "gravity-forms-api",
+  "version": "0.0.1",
+  "description": "Basic module that creates signatures and requests data from gravity forms endpoints",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poetic/blendata.git"
+  },
+  "keywords": [
+    "forms"
+  ],
+  "author": "poetic systems",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/poetic/blendata/issues"
+  },
+  "homepage": "https://github.com/poetic/blendata#readme",
+  "dependencies": {
+    "crypto-js": "^3.1.6"
+  }
+}
