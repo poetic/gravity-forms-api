@@ -1,10 +1,11 @@
 {
   "name": "gravity-forms-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Basic module that creates signatures and requests data from gravity forms endpoints",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,11 @@
     "url": "https://github.com/poetic/gravity-forms-api/issues"
   },
   "homepage": "https://github.com/poetic/gravity-forms-api#readme",
+  "main": "lib/index.js",
   "dependencies": {
     "crypto-js": "^3.1.6"
+  },
+ "devDependencies": {
+    "babel": "^4.6.0"
   }
 }

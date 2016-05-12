@@ -1,4 +1,4 @@
-var CryptoJS = require('crypto-js');
+const CryptoJS = require('crypto-js');
 
 class GravityFormsApi {
   constructor(apiCreds) {
