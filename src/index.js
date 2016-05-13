@@ -1,4 +1,5 @@
 import CryptoJS from 'crypto-js';
+import request from 'request';
 
 class GravityFormsApi {
   constructor(apiCreds) {
@@ -45,7 +46,7 @@ class GravityFormsApi {
     return encodeURIComponent(base64);
   }
 
-  request(domain, route, signature, expirationInSeconds = 600, maxResults = 10, cb) {
+  get(domain, route, signature, expirationInSeconds = 600, maxResults = 10, cb) {
     if (!domain || !route || !signature) {
       this._throwError('GravityFormsApi.request is Missing required arguments');
     }
@@ -56,8 +57,8 @@ class GravityFormsApi {
       `&expires=${futureUnixTime}&paging[page_size]=${maxResults}`
     );
 
-    return HTTP.get(url, {}, cb);
+    return request(url, cb);
   }
 }
 
-export default GravityFormsApi;
+exports.GravityFormsApi = GravityFormsApi;
