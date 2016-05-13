@@ -5,13 +5,13 @@ class GravityFormsApi {
     const isValid = options => options.apiKey && options.domain && options.privateKey;
 
     if (isValid(apiCreds)) {
-      this.setup(apiCreds);
+      this._setup(apiCreds);
     } else {
-      this.throwError('Invalid api credentials');
+      this._throwError('Invalid api credentials');
     }
   }
 
-  static setup(options) {
+  _setup(options) {
     const { apiKey, domain, privateKey } = options;
 
     this.apiKey = apiKey;
@@ -19,23 +19,23 @@ class GravityFormsApi {
     this.baseEndPoint = `${domain}/gravityformsapi`;
   }
 
-  static convertToFutureUnixTime(expirationInSeconds) {
+  _convertToFutureUnixTime(expirationInSeconds) {
     const currentDate = new Date();
     const unixTimeInSeconds = parseInt(currentDate.getTime() / 1000, 10);
 
     return unixTimeInSeconds + expirationInSeconds;
   }
 
-  static throwError(desc) {
+  _throwError(desc) {
     throw new Error(desc);
   }
 
   createSignature(method, route, expirationInSeconds = 600) {
     if (!method || !route) {
-      this.throwError('GravityFormsApi.createSignature is Missing required arguments');
+      this._throwError('GravityFormsApi.createSignature is Missing required arguments');
     }
 
-    const futureUnixTime = this.convertToFutureUnixTime(expirationInSeconds);
+    const futureUnixTime = this._convertToFutureUnixTime(expirationInSeconds);
 
     const stringToSign = `${this.apiKey}:${method}:${route}:${futureUnixTime}`;
 
@@ -47,10 +47,10 @@ class GravityFormsApi {
 
   request(domain, route, signature, expirationInSeconds = 600, maxResults = 10, cb) {
     if (!domain || !route || !signature) {
-      this.throwError('GravityFormsApi.request is Missing required arguments');
+      this._throwError('GravityFormsApi.request is Missing required arguments');
     }
 
-    const futureUnixTime = this.convertToFutureUnixTime(expirationInSeconds);
+    const futureUnixTime = this._convertToFutureUnixTime(expirationInSeconds);
     const url = (
       `${this.baseEndPoint}/${route}?api_key=${this.apiKey}&signature=${signature}` +
       `&expires=${futureUnixTime}&paging[page_size]=${maxResults}`
