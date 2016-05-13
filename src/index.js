@@ -1,5 +1,5 @@
 import CryptoJS from 'crypto-js';
-import request from 'request';
+import request from 'request-promise';
 
 class GravityFormsApi {
   constructor(apiCreds) {
@@ -52,12 +52,13 @@ class GravityFormsApi {
     }
 
     const futureUnixTime = this._convertToFutureUnixTime(expirationInSeconds);
-    const url = (
+    const uri = (
       `${this.baseEndPoint}/${route}?api_key=${this.apiKey}&signature=${signature}` +
       `&expires=${futureUnixTime}&paging[page_size]=${maxResults}`
     );
+    const requestOptions = { uri, json: true };
 
-    return request(url, cb);
+    return request(requestOptions);
   }
 }
 
