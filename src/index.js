@@ -5,9 +5,9 @@ class GravityFormsApi {
     const isValid = options => options.apiKey && options.domain && options.privateKey;
 
     if (isValid(apiCreds)) {
-      this._setup(apiCreds);
+      this.setup(apiCreds);
     } else {
-      this._throwError('Invalid api credentials');
+      this.throwError('Invalid api credentials');
     }
   }
 
@@ -32,7 +32,7 @@ class GravityFormsApi {
 
   createSignature(method, route, expirationInSeconds = 600) {
     if (!method || !route) {
-      this._throwError('GravityFormsApi.createSignature is Missing required arguments');
+      this.throwError('GravityFormsApi.createSignature is Missing required arguments');
     }
 
     const futureUnixTime = this.convertToFutureUnixTime(expirationInSeconds);
@@ -47,7 +47,7 @@ class GravityFormsApi {
 
   request(domain, route, signature, expirationInSeconds = 600, maxResults = 10, cb) {
     if (!domain || !route || !signature) {
-      this._throwError('GravityFormsApi.request is Missing required arguments');
+      this.throwError('GravityFormsApi.request is Missing required arguments');
     }
 
     const futureUnixTime = this.convertToFutureUnixTime(expirationInSeconds);
