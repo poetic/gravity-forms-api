@@ -33,7 +33,7 @@ class GravityFormsApi {
 
   createSignature(method, route, expirationInSeconds = 600) {
     if (!method || !route) {
-      this._throwError('GravityFormsApi.createSignature is Missing required arguments');
+      this._throwError('GravityFormsApi.createSignature is missing required arguments');
     }
 
     const futureUnixTime = this._convertToFutureUnixTime(expirationInSeconds);
@@ -48,7 +48,7 @@ class GravityFormsApi {
 
   get(domain, route, signature, expirationInSeconds = 600, maxResults = 10, cb) {
     if (!domain || !route || !signature) {
-      this._throwError('GravityFormsApi.request is Missing required arguments');
+      this._throwError('GravityFormsApi.request is missing required arguments');
     }
 
     const futureUnixTime = this._convertToFutureUnixTime(expirationInSeconds);
