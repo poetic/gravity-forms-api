@@ -1,4 +1,4 @@
-const CryptoJS = require('crypto-js');
+import CryptoJS from 'crypto-js';
 
 class GravityFormsApi {
   constructor(apiCreds) {
@@ -60,4 +60,4 @@ class GravityFormsApi {
   }
 }
 
-exports.GravityFormsApi = GravityFormsApi;
+export default GravityFormsApi;
