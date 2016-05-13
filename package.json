@@ -1,6 +1,6 @@
 {
   "name": "gravity-forms-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Basic module that creates signatures and requests data from gravity forms endpoints",
   "main": "lib/index.js",
   "scripts": {
