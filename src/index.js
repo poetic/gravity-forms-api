@@ -46,7 +46,7 @@ class GravityFormsApi {
     return encodeURIComponent(base64);
   }
 
-  get(domain, route, signature, expirationInSeconds = 600, maxResults = 10, cb) {
+  get(domain, route, signature, expirationInSeconds = 600, maxResults = 10, offset = 0, cb) {
     if (!domain || !route || !signature) {
       this._throwError('GravityFormsApi.request is missing required arguments');
     }
@@ -54,7 +54,7 @@ class GravityFormsApi {
     const futureUnixTime = this._convertToFutureUnixTime(expirationInSeconds);
     const uri = (
       `${this.baseEndPoint}/${route}?api_key=${this.apiKey}&signature=${signature}` +
-      `&expires=${futureUnixTime}&paging[page_size]=${maxResults}`
+      `&expires=${futureUnixTime}&paging[page_size]=${maxResults}&paging[offset]=${offset}`
     );
     const requestOptions = { uri, json: true };
 
